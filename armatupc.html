@@ -1,0 +1,1969 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="/include/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/include/slick/slick-theme.css">
+    <title>Arma tu PC - Beta</title>
+</head>
+<style>
+    .alert {
+        margin: 15px 25px;
+    }
+
+    .loadingC {
+        position: fixed;
+        z-index: 999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: none;
+    }
+
+    /* Transparent Overlay */
+    .loadingC:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(rgba(20, 20, 20, .3), rgba(0, 0, 0, .3));
+
+        background: -webkit-radial-gradient(rgba(20, 20, 20, .3), rgba(0, 0, 0, .3));
+    }
+
+    .slick-track {
+        display: flex;
+    }
+
+    #config_personalizada_content {
+        width: 100%;
+    }
+
+    .title-sidebar {
+        margin-bottom: 0px !important;
+    }
+
+    #contentSelectedAllItems #contenCpuSelectedAll,
+    #contentSelectedAllItems #MotherBoardSelectedAll {
+        margin-bottom: 15px;
+    }
+
+    .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('//loginstore.com/imagenes/Blocks-1s-200px.gif') 50% 50% no-repeat rgb(249, 249, 249, 0.5);
+        display: none;
+
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+    }
+
+    .loader-child {
+        padding-top: 175px;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    #imageProduct {
+        cursor: pointer;
+        width: 90px;
+    }
+
+    .zoom-in {
+        position: absolute;
+        width: 16px;
+        left: 90px;
+    }
+
+    .contenedor_carrusel_items .slick-arrow {
+        position: absolute;
+        top: -58px;
+        width: 34px;
+        height: 34px;
+        background-color: #333;
+    }
+
+    .contenedor_carrusel_items .slick-arrow i {
+        color: #fff;
+        line-height: 34px;
+        margin: 0px 10px;
+    }
+
+    .contenedor_carrusel_items .slick-prev-arrow {
+        right: 44px;
+    }
+
+    .contenedor_carrusel_items .slick-next-arrow {
+        right: 7px;
+    }
+
+    .slick-list {
+        padding-bottom: 14px !important;
+    }
+
+    .selectedItemCard {
+        box-shadow: 10px 10px 5px 0px rgba(12, 110, 253, 0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(12, 110, 253, 0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(12, 110, 253, 0.75);
+    }
+
+    .btnFilter,
+    .btnFilter2,
+    .btnFilterC {
+        margin: 5px 5px;
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+
+    .content_filtros {
+        margin-top: 10px;
+    }
+
+    header {
+        background-image: url(https://img.deltron.com.pe/images/temp_imgs/img_sistemas/arma_pc_1.jpg);
+        background-size: cover;
+    }
+
+    #config_personalizada {
+        background-image: url(https://img.deltron.com.pe/images/temp_imgs/img_sistemas/arma_pc_2.jpg);
+        background-size: cover;
+    }
+
+    #config_personalizada:hover {
+        /*Necesito cuando se haga el hover se opaque un poco */
+        opacity: 0.8;
+    }
+
+    #config_predeterminada {
+        background-image: url(https://img.deltron.com.pe/images/temp_imgs/img_sistemas/arma_pc_3.jpg);
+        background-size: cover;
+    }
+
+    .title-basic-white,
+    .title-basic-white:hover {
+        color: white;
+    }
+
+    .btn.btn-light.btnFilter.active,
+    .btnFilterC.active,
+    .btnFilter2.active {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+
+<body>
+    <header class="bg-dark py-5">
+        <div style="position: absolute;right: 33px;text-align: center;">
+            <a style="text-decoration: none;color: #fff;font-size: 18px;" href="https://youtu.be/y5wvQT_3HWQ" target="_blank">
+                <i class="fa-brands fa-youtube fa-2xl" style="color: #ed0c5b;"></i>
+                <span style="display: block;margin-top: 10px;">Tutorial <small style="display: block;font-size: 12px;">Ver 1.103</small></span>
+            </a>
+        </div>
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder"><a class="text-decoration-none title-basic-white" href="#" onClick="window.location.reload()">Arma tu PC</a></h1>
+                <p class="lead fw-normal mb-0 title-basic-white">Diseña tu PC con Deltron</p>
+            </div>
+        </div>
+    </header>
+    <div class="loader">
+        <div class="loader-child">SELECCIONANDO COMPONENTES COMPATIBLES</div>
+    </div>
+    <!-- Section: Split screen -->
+    <section class="config_content_all">
+
+        <div class="container-fluid px-0">
+            <div class="row g-0">
+                <div class="col-lg-6 vh-100 bg-danger" role="button" id="config_personalizada">
+                    <div class="vh-100">
+                        <div class="h-100 d-flex justify-content-center align-items-center px-5">
+                            <div>
+                                <h2 class="display-4 animation fade-in title-basic-white">Configuraciones</h2>
+                                <h1 class="display-2 fw-bold text-uppercase animation fade-in text-primary">Personalizadas</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 vh-100" role="button" id="config_predeterminada" style="opacity: 0.3;" data-bs-toggle="popover" title="Información" data-bs-placement="top" data-bs-content="Deshabilitado Temporalmente">
+                    <div class="vh-100">
+                        <div class="h-100 d-flex justify-content-center align-items-center px-5">
+                            <div>
+                                <h2 class="display-4 animation fade-in title-basic-white">Configuraciones</h2>
+                                <h1 class="display-2 fw-bold text-uppercase animation fade-in text-primary">Predeterminadas</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Section: Split screen  -->
+
+
+    <div id="config_personalizada_content" class="wrapper row d-none">
+                    <div class="accordion configInterface" id="configInterface">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Observación: </h4>
+                    <p>Información de precios y stock sólo disponible para distribuidores. Si desea unirse a nosotros haga click
+                        <a target="_blank" href="https://xpand.deltron.com.pe/xtranet/preCust/frm_inscripcion.php?from=landing_arma_tu_pc" class="alert-link">AQUÍ</a>
+                    </p>
+                    <hr>
+                    <p class="mb-0">Deltron - Arma tu Pc</p>
+                </div>
+            </div>
+        
+        <h2 class="fw-bold mb-7 text-center" style="margin: 30px 0px;">Configuraciones Personalizadas</h2>
+
+        <div class="accordion col-md-8" id="accordionExample">
+            <form id="formConfigPc" action="" method="post">
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Selecciona Marca (CPU)
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <select id="selectCpu" class="form-select" aria-label="Default select example">
+                                <option selected>--Seleccionar--</option>
+                                <option value="INTEL">Intel</option>
+                                <option value="AMD">AMD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Selecciona Procesador (CPU)
+                        </button>
+                    </h2>
+
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="form-check form-switch d-flex justify-content-end" style="padding-right: 20px;padding-top: 5px;">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckStock">
+                            <label class="form-check-label" for="flexSwitchCheckStock" style="padding-left: 5px;">Stock</label>
+                        </div>
+                        <div class="accordion-body" id="contentCpuItems">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Selecciona Placa Madre
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="form-check form-switch d-flex justify-content-end" style="padding-right: 20px;padding-top: 5px;">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckStock">
+                            <label class="form-check-label" for="flexSwitchCheckStock" style="padding-left: 5px;">Stock</label>
+                        </div>
+                        <div class="accordion-body" id="contentMotherBoardsItems">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Selecciona Componentes
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="form-check form-switch d-flex justify-content-end" style="padding-right: 20px;padding-top: 5px;">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckStockComponentes">
+                            <label class="form-check-label" for="flexSwitchCheckStockComponentes" style="padding-left: 5px;">Stock</label>
+                        </div>
+                        <div class="accordion-body" id="contentComponentesItems">
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="asideright col-md-4">
+            <div class="list-group" id="contentSelectedAllItems">
+                <div id="contenCpuSelectedAll">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">PROCESADOR <small>(Requerido)</small></h5>
+                    <div class="itemSideBarHtml" data-order="1" id="contenCpuSelected"></div>
+                </div>
+
+                <div id="MotherBoardSelectedAll">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">MOTHERBOARD <small>(Requerido)</small></h5>
+                    <div class="itemSideBarHtml" data-order="2" id="MotherBoardSelected"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">MEMORIAS RAM <small>(Requerido)</small></h5>
+                    <div class="itemSideBarHtml" data-order="3" id="memorias-ram"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">ALMACENAMIENTO M.2</h5>
+                    <div class="itemSideBarHtml" data-order="4" id="almacenamiento-m-2"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">ALMACENAMIENTO SSD</h5>
+                    <div class="itemSideBarHtml" data-order="5" id="almacenamiento-ssd"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">ALMACENAMIENTO HDD </h5>
+                    <div class="itemSideBarHtml" data-order="6" id="almacenamiento-hdd"></div>
+                </div>
+
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">TARJETA DE VIDEO</h5>
+                    <div class="itemSideBarHtml" data-order="7" id="tarjetas-de-video---dispositivos-de-video"></div>
+                </div>
+
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">CASE <small>(Requerido)</small></h5>
+                    <div class="itemSideBarHtml" data-order="8" id="cases--cajas--para-pc"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">COOLER PARA CPU</h5>
+                    <div class="itemSideBarHtml" data-order="9" id="fan-cooler-para-cpu"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-danger text-white">FUENTES DE PODER <small>(Requerido)</small></h5>
+                    <div class="itemSideBarHtml" data-order="10" id="cases--fuente-para"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">MICROSOFT, O/S SOFTWARE</h5>
+                    <div class="itemSideBarHtml" data-order="11" id="microsoft--o-s-software"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">TECLADOS</h5>
+                    <div class="itemSideBarHtml" data-order="12" id="teclados"></div>
+                </div>
+
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">MOUSES</h5>
+                    <div class="itemSideBarHtml" data-order="13" id="mouse--trackball--punteros"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">MONITORES</h5>
+                    <div class="itemSideBarHtml" data-order="14" id="monitores"></div>
+                </div>
+                <div id="MotherBoardSelectedAll" class="d-none">
+                    <h5 class="title-sidebar p-3 mb-3 bg-secondary text-white">CDROM / DVD / BLU RAY DRIVES</h5>
+                    <div class="itemSideBarHtml" data-order="15" id="cdrom---dvd---blu-ray-drives"></div>
+                </div>
+                <div id="MotherBoardSelectedAll">
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2" id="sub_total_all_txt">Subtotal: </p>
+                        <p id="sub_total_all" class="mb-2"></p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2" id="igv_end_txt">IGV: </p>
+                        <p id="igv_end" class="mb-2"></p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2" id="sub_total_all_end_txt">Total: </p>
+                        <p id="sub_total_all_end" class="mb-2"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                                <div class="col-3">
+                    <button disabled id="createOrden" type="button" class="btn btn-secondary btn-lg btn-block" style="width: 100%;margin-top: 25px;">
+                        <i class="fa-solid fa-cart-plus"></i>  AGREGAR (solo para clientes registrados)                    </button>
+                </div>
+                <div class="col-3">
+                    <button disabled id="verOrden" type="button" class="btn btn-secondary btn-lg btn-block" style="width: 100%;margin-top: 25px;">
+                        <i class="fa-solid fa-expand"></i>   VER COTIZACIONES (solo para clientes registrados)                    </button>
+                </div>
+                <div class="col-3">
+                    <button onclick="location.href='mailto:armatupc@deltron.com.pe';" type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%;margin-top: 25px;">
+                        <i class="fa-solid fa-envelope"></i> ESCRIBENOS
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button id="exportarExcel" type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%;margin-top: 25px;">
+                        <i class="fa-solid fa-file-excel"></i> EXPORTAR EXCEL
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="config_predeterminada_content" class="container d-none">
+        <!-- Section: My projects -->
+        <section class="mb-10 text-center">
+            <h2 class="fw-bold mb-7 text-center" style="margin: 30px 0px;">Configuraciones Predeterminadas</h2>
+
+            <div class="row gx-lg-5">
+
+                <!-- First column -->
+                <div class="col-lg-4 col-md-12 mb-6 mb-lg-0">
+                    <div class="card rounded-6 h-100">
+                        <div>
+                            <img style="width: 100%;" src="https://imagenes.expreso.ec/files/image_700_402/uploads/2020/06/22/5ef10cf973ae5.jpeg" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">PC Estudiante</h5>
+                            <p class="text-muted">
+                                <small>Creada <u>13.09.2021</u> for
+                                    <a href="" class="text-dark">Basica</a></small>
+                            </p>
+                            <p class="card-text">
+                                Ut pretium ultricies dignissim. Sed sit amet mi eget urna
+                                placerat vulputate. Ut vulputate est non quam dignissim
+                                elementum. Donec a ullamcorper diam.
+                            </p>
+                            <a href="#!" class="btn btn-secondary btn-rounded">Escoger</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- First column -->
+
+                <!-- Second column -->
+                <div class="col-lg-4 mb-6 mb-lg-0">
+
+                    <div class="card rounded-6 h-100">
+                        <div>
+                            <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/01/mejores_pc_sobremesa_2019_2.jpg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Pc Oficina</h5>
+                            <p class="text-muted">
+                                <small>Creada <u>12.01.2022</u> for
+                                    <a href="" class="text-dark">Intermedia</a></small>
+                            </p>
+                            <p class="card-text">
+                                Suspendisse in volutpat massa. Nulla facilisi. Sed aliquet
+                                diam orci, nec ornare metus semper sed. Integer volutpat
+                                ornare erat sit amet rutrum. Ut vulputate est non quam.
+                            </p>
+                            <a href="#!" class="btn btn-secondary btn-rounded">Escoger</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Second column -->
+
+                <!-- Third column -->
+                <div class="col-lg-4 mb-6 mb-lg-0">
+
+                    <div class="card rounded-6 h-100">
+                        <div>
+                            <img src="https://www.destreaming.es/wp-content/uploads/2020/11/pc_para_streaming_gaming.jpg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Pc Gamer</h5>
+                            <p class="text-muted">
+                                <small>Creada <u>10.11.2022</u> for
+                                    <a href="" class="text-dark">Avanzada</a></small>
+                            </p>
+                            <p class="card-text">
+                                Curabitur tristique, mi a mollis sagittis, metus felis mattis
+                                arcu, non vehicula nisl dui quis diam. Mauris ut risus eget
+                                massa volutpat feugiat. Donec.
+                            </p>
+                            <a href="#!" class="btn btn-secondary btn-rounded">Escoger</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Third column -->
+
+            </div>
+
+        </section>
+        <!-- Section: My projects -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalProductImage" tabindex="-1" aria-labelledby="modalProductImageLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="text-align: center;font-size: 1.1rem;font-weight: bold;" class="modal-title" id="modalProductImageLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Imagen</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Especificaciones</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <img id="srcProduct" style="width: 100%;" src="" />
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <iframe id="frameSpecs" width="100%" height="600px" src=""></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loadingC"><img width="80" src="https://loginstore.com/imagenes/Blocks-1s-200px.gif" /><br />Seleccionando Componentes Compatibles</div>
+    <!-- Modal Carrito -->
+    <div class="modal fade" id="modalProductCart" tabindex="-1" aria-labelledby="modalProductCartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="text-align: center;font-size: 1.1rem;font-weight: bold;" class="modal-title" id="modalProductCartLabel">Sistema de Cotizaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <div class="contentLoading">
+                        <img width="64" src="https://loginstore.com/imagenes/Blocks-1s-200px.gif" />
+                        <span>Cargando...</span>
+                    </div>
+                    <iframe id="frameCartAll" width="100%" height="600px" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirm Data -->
+    <div class="modal fade" id="modalConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Arma tu PC</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Al cambiar de componente, el resto de componentes seleccionados, se reiniciaran.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Descartar Cambio</button>
+                    <button type="button" class="btn btn-primary" id="confirmarCambioTrue">Confirmar Cambio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Confirm Stock Componentes -->
+    <div class="modal fade" id="modalConfirmStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Arma tu PC</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Al cambiar de Stock, el resto de componentes seleccionados, se reiniciaran.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Descartar Cambio</button>
+                    <button type="button" class="btn btn-primary" id="confirmarCambioTrue">Confirmar Cambio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmar Guardado -->
+    <div class="modal fade" id="modalConfirmSave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Arma tu PC</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Al grabar estos datos globales se reiniciara la Interface.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarCambioTrueSave">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <script src="https://kit.fontawesome.com/df48a91290.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- SLICK JSS -->
+
+    <script src="/include/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //var = showInterface
+                        //$('[data-toggle="tooltip"]').tooltip();
+            $("[data-bs-toggle=popover]").popover({
+                html: true
+            });
+            $('#config_predeterminada').popover().click(function() {
+                setTimeout(function() {
+                    $('#config_predeterminada').popover('hide');
+                }, 2000);
+            });
+
+            //Grabando Interface
+            //saveConfigFrmInterface
+            /********************************************************* */
+            $("#configFrmInterface").submit(function(event) {
+                $('#modalConfirmSave').modal('show');
+                //Verificar si dio Click si Guardar o Cancelar
+                $(document).on("click", "#confirmarCambioTrueSave", function() {
+                    if ($('#flexSwitchCheckDefault').is(':checked')) {
+                        var igv = 'si';
+                    } else {
+                        var igv = 'no';
+                    }
+
+                    var formData = {
+                        factor: $("#Factor").val(),
+                        moneda: $("#moneda").val(),
+                        igv: igv,
+                        saveConfigFrmInterface: $("#saveConfigFrmInterface").val(),
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "",
+                        data: formData,
+                    }).done(function(data) {
+                        console.log(data);
+                        //Recargar pagina
+                        window.location.href = "https://" + window.location.host + "/xtranet/pedidos_linea/armatupc.php?var=showInterface";
+                    });
+
+
+                });
+
+
+                event.preventDefault();
+            });
+
+            /********************************************************* */
+            //FILTRANDO LISTADOS COMBO BOX , MARCAS
+            //btnFilter
+            $(document).on("click", ".btnFilter", function() {
+                var claseSeleccionada = $(this).attr('class');
+
+                $(this).parent().find('.active').removeClass('active');
+                $(this).addClass('active');
+                var marcaSeleccionada = $(this).attr('data-filter');
+                //seleccionamos la clase del elemento clickeado
+                if (claseSeleccionada.includes('active')) {
+                    $(this).removeClass('active');
+                }
+                //tomamos el valor de la frecuencia seleccionada
+                var frecuencia = $(this).parent().parent().find('.btnFilter2.active').attr('data-filter-f');
+
+
+                //PREGUNTAREMOS SI EL CONTROL DE STOCK CON ID: flexSwitchCheckStockComponentes ESTA SELECCIONADO O NO
+                var stockComponentes = $('#flexSwitchCheckStockComponentes').is(':checked');
+
+                $(this).parent().parent().find('.form-select option').each(function(index, element) {
+                    var brandFilter = $(element).attr('data-filter');
+                    var frecuenciaElemento = $(element).attr('data-filter-f');
+                    // Verificar si la opción debe ser ocultada o mostrada
+                    var ocultar = (marcaSeleccionada && brandFilter !== marcaSeleccionada && marcaSeleccionada !== 'brand-sin-filtros') ||
+                        (frecuencia && frecuenciaElemento !== frecuencia);
+                    //console.log(brandFilter + " = " + marcaSeleccionada + " --------------- " + frecuenciaElemento + " " + frecuencia);
+                    if (ocultar) {
+                        $(element).addClass('d-none');
+                    } else {
+                        // Aquí estamos preguntando si el filtro de stock está prendido
+                        if (stockComponentes) {
+                            if ($(element).attr('data-stock') == 0) {
+                                $(element).addClass('d-none');
+                            } else {
+                                $(element).removeClass('d-none');
+                            }
+                        } else {
+                            $(element).removeClass('d-none');
+                        }
+                    }
+                    //ESTO ES CUANDO LE VUELVEN A DAR CLICK EN EL MISMO FILTRO
+                    if (claseSeleccionada.includes('active')) {
+                        //aqui estamos preguntando si el filtro de stock esta prendido
+                        console.log(brandFilter + " = " + marcaSeleccionada + " --------------- " + frecuenciaElemento + " " + frecuencia);
+                        if (stockComponentes) {
+                            //Debo tener en cuenta tambien si el filtro de marca esta prendido y cual es su valor
+                            if (frecuencia && frecuenciaElemento !== frecuencia) {
+                                $(element).addClass('d-none');
+                            } else {
+                                if ($(element).attr('data-stock') == 0) {
+                                    $(element).addClass('d-none');
+                                } else {
+                                    $(element).removeClass('d-none');
+                                }
+                            }
+                        } else {
+                            //solo tomar en cuenta la marca seleccionada y ya no la frecuencia
+                            console.log("NO SELECCIONO STOCK Y SOLO DEBO MOSTRAR ELEMENTO DE LA MARCA SELECCIONADA");
+                            if (frecuencia && frecuenciaElemento !== frecuencia) {
+                                $(element).addClass('d-none');
+                            } else {
+                                $(element).removeClass('d-none');
+                            }
+                        }
+                    }
+                });
+            });
+
+            /********************************************************* */
+            //FILTRANDO LISTADOS COMBO BOX , FRECUENCIAS
+            //btnFilter2
+            $(document).on("click", ".btnFilter2", function() {
+                var claseSeleccionada = $(this).attr('class');
+
+                $(this).parent().find('.active').removeClass('active');
+                $(this).addClass('active');
+                var frecuencia = $(this).attr('data-filter-f');
+                //seleccionamos la clase del elemento clickeado
+                if (claseSeleccionada.includes('active')) {
+                    $(this).removeClass('active');
+                }
+                //PREGUNTAREMOS SI EL CONTROL DE STOCK CON ID: flexSwitchCheckStockComponentes ESTA SELECCIONADO O NO
+                var stockComponentes = $('#flexSwitchCheckStockComponentes').is(':checked');
+
+                //tomamos el valor de la marca seleccionada
+                var marcaSeleccionada = $(this).parent().parent().find('.btnFilter.active').attr('data-filter');
+
+                $(this).parent().parent().find('.form-select option').each(function(index, element) {
+                    var brandFilter = $(element).attr('data-filter');
+                    var frecuenciaElemento = $(element).attr('data-filter-f');
+                    // Verificar si la opción debe ser ocultada o mostrada
+                    var ocultar = (marcaSeleccionada && brandFilter !== marcaSeleccionada && marcaSeleccionada !== 'brand-sin-filtros') ||
+                        (frecuencia && frecuenciaElemento !== frecuencia);
+
+                    if (ocultar) {
+                        $(element).addClass('d-none');
+                    } else {
+                        // Aquí estamos preguntando si el filtro de stock está prendido
+                        if (stockComponentes) {
+                            if ($(element).attr('data-stock') == 0) {
+                                $(element).addClass('d-none');
+                            } else {
+                                $(element).removeClass('d-none');
+                            }
+                        } else {
+                            $(element).removeClass('d-none');
+                        }
+                    }
+
+                    //ESTO ES CUANDO LE VUELVEN A DAR CLICK EN EL MISMO FILTRO
+                    if (claseSeleccionada.includes('active')) {
+                        //aqui estamos preguntando si el filtro de stock esta prendido
+                        console.log(brandFilter + " = " + marcaSeleccionada + " --------------- " + frecuenciaElemento + " " + frecuencia);
+                        if (stockComponentes) {
+                            //Debo tener en cuenta tambien si el filtro de marca esta prendido y cual es su valor
+                            if (marcaSeleccionada && brandFilter !== marcaSeleccionada && marcaSeleccionada !== 'brand-sin-filtros') {
+                                $(element).addClass('d-none');
+                            } else {
+                                if ($(element).attr('data-stock') == 0) {
+                                    $(element).addClass('d-none');
+                                } else {
+                                    $(element).removeClass('d-none');
+                                }
+                            }
+                        } else {
+                            //solo tomar en cuenta la marca seleccionada y ya no la frecuencia
+                            console.log("NO SELECCIONO STOCK Y SOLO DEBO MOSTRAR ELEMENTO DE LA MARCA SELECCIONADA");
+                            if (marcaSeleccionada && brandFilter !== marcaSeleccionada && marcaSeleccionada !== 'brand-sin-filtros') {
+                                $(element).addClass('d-none');
+                            } else {
+                                $(element).removeClass('d-none');
+                            }
+                        }
+                    }
+                });
+            });
+
+
+
+            //FILTRANDO EN LOS CARRUSELES 
+            $(document).on("click", ".btnFilterC", function() {
+                //REESTRUCTURAR FILTROS DE MARCAS.
+
+                $(this).parent().find('.active').removeClass('active');
+                $(this).addClass('active');
+
+                var clas_filter = $(this).attr('data-filter');
+                var carruselSelected = $(this).parent().parent().find('.contenedor_carrusel_items');
+
+                var posicion1 = clas_filter.indexOf('nvidia');
+                var posicion2 = clas_filter.indexOf('radeon');
+                var cont_tarjeta = carruselSelected.attr('class').indexOf('class-tarjetas-de-video---dispositivos-de-video');
+
+                //CAMBIOS
+                if (cont_tarjeta !== -1) {
+                    var tipo_filtro = '.gpuTec';
+                } else {
+                    var tipo_filtro = '.brandItem';
+                }
+
+
+
+                if (clas_filter == 'brand-sin-filtros') {
+                    //DANDO CLICK EN EL FILTRO: TODOS
+                    console.log("Dando click en el filtro TODOS");
+                    carruselSelected.slick('slickUnfilter');
+                } else {
+
+                    carruselSelected.slick('slickUnfilter');
+                    console.log("FILTRANDO....POR: " + tipo_filtro);
+                    $(this).parent().parent().find('.contenedor_carrusel_items ' + tipo_filtro).each(function(index, element) {
+                        $(element).parent().removeClass('brandSelected');
+                        var gpuTec = $(element).val();
+                        if (gpuTec == clas_filter) {
+                            $(element).parent().addClass('brandSelected');
+                        }
+                    });
+                    carruselSelected.slick('slickFilter', '.brandSelected');
+
+                }
+            });
+
+
+            $(document).on("click", "#flexSwitchCheckStockComponentes", function() {
+                //CALL TO API AND SKU MOTHERBOARD AGAIN
+                console.log('CALL TO API AND SKU MOTHERBOARD AGAIN');
+                callResetAllComponents(this, 'componentesStockReset');
+
+            });
+
+
+            //FILTRANDO STOCK cpus y motherboards
+            $(document).on("click", "#flexSwitchCheckStock", function() {
+                validateStockSelects($(this));
+            });
+
+            //VALIDANDO FORM
+            $("#formConfigPc").validate();
+            $(document).on('click', '#createOrden', function() {
+                //$("#formConfigPc").submit();
+            });
+
+
+            //CAPTANDO EL CLICK DE LA PANTALLA DE INICIO
+            $(document).on("click", "#config_personalizada", function() {
+                $(".config_content_all").fadeOut('slow', function() {
+                    $("#config_personalizada_content").removeClass('d-none');
+                    $("#config_personalizada_content").show();
+                });
+            });
+
+            $(document).on("click", "#config_predeterminada", function() {
+                //Mostrar modal Deshabilitado Temporalmente
+
+                /*$(".config_content_all").fadeOut('slow', function() {
+                    $("#config_predeterminada_content").removeClass('d-none');
+                    $("#config_predeterminada_content").show();
+                });*/
+            });
+
+            //SELECCIONANDO CPU MARCA
+            $("#selectCpu").change(function() {
+                //detectando el cambio en el select y hacer call a la funcion js que llamara al API
+                var valueSelect = $(this).val();
+                callToApi('marca', valueSelect, 'name_marca');
+            });
+
+
+
+            $(document).on("focus", "#selectCpuItem", function() {
+                var valueSelect = $(this).val();
+                $(this).attr('data-previus', valueSelect);
+            });
+
+            $(document).on("focus", "#selectMotherBoardItem", function() {
+                var valueSelect = $(this).val();
+                $(this).attr('data-previus', valueSelect);
+            });
+
+            $(document).on("focus", "#selectComponentesItem", function() {
+                var valueSelect = $(this).val();
+                $(this).attr('data-previus', valueSelect);
+            });
+
+            //SELECCIONANDO ITEM CPU
+            $(document).on("change", "#selectCpuItem", function() {
+                callResetAllComponents(this, 'cpu');
+            });
+
+            //SELECCIONANDO ITEM MOTHERBOARD --
+            $(document).on("change", "#selectMotherBoardItem", function() {
+                callResetAllComponents(this, 'mdb');
+
+            });
+
+
+
+
+            //SELECCIONANDO ITEM COMPONENTES --
+            $(document).on("change", "#selectComponentesItem", function() {
+                var id_html = $('option:selected', this).attr('data-id-html');
+                //Mostrando el SiderBar
+                $('#' + id_html).parent().removeClass('d-none');
+                $('#' + id_html).parent().fadeIn();
+                callResetAllComponents(this, 'componentes');
+            });
+
+            //CUANDO LE DAN CLICK A LA IMAGEN DEL PRODUCTO imageProduct
+            $(document).on("click", ".clickModal", function() {
+                var srcimage = $(this).attr('data-src');
+                var title = $(this).attr('data-tittle');
+                var sku = $(this).attr('data-sku')
+                // http://www2.deltron.com.pe/modulos/productos/items/specs.php?item_number=
+                var srcSpecs = 'https://xpand.deltron.com.pe/modulos/productos/items/specs.php?item_number=' + sku;
+                $('#srcProduct').attr('src', srcimage);
+                $('#frameSpecs').attr('src', srcSpecs);
+                $('.modal-title').html(title);
+                $('#modalProductImage').modal('show');
+            });
+
+
+            //GENERAR PDF DEL RESUMEN CREADO
+            $('#generatePDF').click(function() {
+                var options = {};
+                var pdf = new jsPDF('p', 'pt', 'a4');
+                pdf.addHTML($("#contentSelectedAllItems"), 15, 15, options, function() {
+                    pdf.save('armar_tu_pc_deltron.pdf');
+                });
+            });
+
+
+            //SELECCIONANDO TARJETA DE VIDEO
+            $(document).on("change", ".select_tarjeta_video", function() {
+                var valueSelect = $(this).val();
+                var fuente_recomendada = $('option:selected', this).attr('data-fuente');
+                var fuente_array = fuente_recomendada.split(' ');
+                var fuente_array_limite = fuente_array[0];
+                //class-cases--fuente-para
+                $('.class-cases--fuente-para option').css('display', 'block');
+                $('.class-cases--fuente-para option').each(function(index, element) {
+                    var potencia = $(element).attr('data-potencia-fuente');
+
+                    if (typeof potencia === 'undefined' || potencia === null) {
+                        console.log($(element).val() + 'The variable is undefined or null');
+                    } else {
+                        if (potencia !== '') {
+                            var potencia_array = potencia.split(' ');
+                            if (Number(fuente_array_limite) > Number(potencia_array[0])) {
+                                console.log($(element).val() + ' : ' + fuente_array_limite + ' <=> ' + potencia_array[0]);
+                                //ocultamos estas fuente por no cumplir con la fuente recomendada potencia
+                                $(element).css('display', 'none');
+                            }
+                        }
+
+                    }
+
+
+                });
+
+            });
+
+
+            //SELECCIONANDO UN ITEM DEL CARRUSEL
+            $(document).on("click", ".btnSelectedItemCard", function() {
+
+                //IDENTIFICAR QUE SI ESTOY DANDO CLICK A UN ITEM SELECCIONADO O ES UNA NUEVA ELECCION
+                var seletected = $(this).parent().parent().find('.selectedItemCard');
+                var sku_selected = seletected.find('.skuItem').val();
+                var sku_p = $(this).parent().find('.skuItem').val();
+                var id_html = $(this).parent().find('.idHtmlItem').val();
+
+                if (sku_selected == sku_p) {
+                    //alert("[IGUAL] SKU SELECCIONADO ANTES: " + sku_selected + ' | SKU SELECCIONADO AHORA: '+sku_p);
+                    $(this).parent().parent().find('.selectedItemCard').removeClass('selectedItemCard');
+                    //quitar del sidebar
+                    var id_html_c = '#' + id_html;
+                    $(id_html_c).html('');
+                    callCalculateSubTotal();
+                    return;
+                } else {
+                    //alert("[DIFERENTE] SKU SELECCIONADO ANTES: " + sku_selected + ' | SKU SELECCIONADO AHORA: '+sku_p);
+                    $(this).parent().parent().find('.selectedItemCard').removeClass('selectedItemCard');
+                }
+
+
+
+
+
+                //VARIABLES QUE SE TIENEN QUE ENVIAR A LA FUNCION
+
+                var price_p = $(this).parent().find('.priceItem').val();
+                var img_p = $(this).parent().find('.imgItem').val();
+                var name_p = $(this).parent().find('.nameItem').val();
+                var desc_p = $(this).parent().find('.descItem').val();
+
+                var num_max = $(this).parent().find('.NumMaxItem').val();
+                var LineProductName = $(this).parent().find('.LineProductName').val();
+                var orden = $(this).parent().parent().parent().parent().attr('data-order');
+
+                //MOSTRAR EL SIDEBAR
+                $('#' + id_html).parent().removeClass('d-none');
+                $('#' + id_html).parent().fadeIn();
+
+                //MOSTRAR EL SIGUIENTE COMPONENTE
+                /*var slider_next = $(this).parent().parent().parent().parent().parent().parent().next().find('.contenedor_carrusel_items');
+                $(this).parent().parent().parent().parent().parent().parent().next().slideDown('slow', function() {
+                    slider_next.slick('slickGoTo', '1');
+                });*/
+
+
+                callToSelectedSidebar(sku_p, price_p, img_p, name_p, desc_p, 'componentes', id_html, num_max);
+
+                callCalculateSubTotal();
+
+                $(this).parent().addClass('selectedItemCard');
+
+                //BORRANDO CONTENIDO EXISTENTE DELANTE contentComponentCards
+                console.log("Borrando contenido....Before");
+                $('#contentComponentesItems .contentComponentCards').each(function(index, element) {
+                    var data_order_c = $(element).attr('data-order');
+                    if (Number(data_order_c) > Number(orden)) {
+                        console.log("Borrando contenido....Order: " + data_order_c);
+                        $(element).remove();
+                    }
+                });
+
+                //LLAMAR A API INTERNA
+                callApiInterna(sku_p, orden, LineProductName);
+
+
+                /*
+                switch (LineProductName) {
+                    case 'TARJETAS DE VIDEO / DISPOSITIVOS DE VIDEO':
+                        executeCompatibilidadTarjetaVideo($(this));
+                        break;
+                    case 'CASES (CAJAS) PARA PC':
+                        executeCompatibilidadCase($(this));
+                        break;
+
+                    default:
+                        break;
+                }*/
+
+            });
+
+            //VER ORDEN
+            $(document).on("click", "#verOrden", function() {
+                $('.contentLoading').show();
+                $('#modalProductCart').modal('show')
+                setTimeout(function() {
+                    $('#frameCartAll').attr('src', '/xtranet/pedidos_linea/e_commerce/index.php?from=armatuPC&action=showCar');
+                    $('.contentLoading').hide();
+                }, 10000);
+
+
+            });
+
+            //AGREGAR TODO AL CARRITO
+            $(document).on("click", "#createOrden", function() {
+                var dataP = {
+                    header: "ArmaTuPC",
+                    detail: []
+                };
+
+
+                $('#contentSelectedAllItems .skuSelected').each(function(index, element) {
+                    var sku = $(element).text();
+                    var qty_producto = $(element).parent().parent().find("#tentacles").val();
+                    var rowData = {
+                        id: sku,
+                        cantidad: qty_producto
+                    };
+
+                    dataP.detail.push(rowData);
+
+                });
+                console.log(dataP);
+                var jsonData = JSON.stringify(dataP);
+                //LLAMAR AJAX DE CARRITO 
+                $.ajax({
+                    url: '/include/sections/shoppingCartAction.php',
+                    dataType: "json",
+                    data: jsonData,
+                    type: 'post',
+                    success: function(data) {
+                        console.log("DATA AJAX CART NEW");
+                        console.log(data);
+                    }
+                });
+
+                $('.contentLoading').show();
+                $('#modalProductCart').modal('show');
+
+                setTimeout(function() {
+                    $('#frameCartAll').attr('src', '/xtranet/pedidos_linea/e_commerce/index.php?from=armatuPC&action=showCar');
+                    $('.contentLoading').hide();
+                }, 25000);
+
+                //window.open('/xtranet/pedidos_linea/e_commerce/index.php?from=new_product&action=updateShoppingCar', '_blank');
+            });
+
+            //CLICK MOSTRAR COMPONENTE OCULTO alert-link collapsed 
+            $(document).on("click", "a.alert-link", function() {
+                var id_content_slider = $(this).attr('aria-controls');
+                console.log("id_content_slider: " + id_content_slider);
+                $('#' + id_content_slider).find('.contenedor_carrusel_items').slick('slickGoTo', '1');
+                $('#' + id_content_slider).find('.contenedor_carrusel_items').slick('setPosition');
+            });
+
+            //CLICK EXPORTAR EXCEL LOS PRODUCTOS SELECCIONADOS
+            $(document).on("click", "#exportarExcel", function() {
+                //MOSTRANDO lOADING, LUEGO RESULTADO 
+                $('.loader').fadeIn('slow', function() {
+                    $('.loader').css('display', 'flex');
+                    $('.loader .loader-child').hide();
+                    saveItemSelectedSesion();
+                });
+
+
+                setTimeout(function() {
+                    $('.loader .loader-child').show();
+
+                    $('.loader').fadeOut('slow', function() {
+                        alert("Data exportada correctamente.");
+                        var url = 'armatupc.php?goExportarExcel=go';
+                        location.href = url;
+                    });
+                }, 10000);
+                event.preventDefault();
+
+
+            });
+
+        });
+
+        function callApiInterna(sku_p, orden, linea_producto) {
+
+            var orden_next = Number(orden) + 1;
+            console.log("LLAMANDO A callApiInterna: " + orden_next);
+
+
+            $.ajax({
+                url: '',
+                data: 'apiInterna=go&sku=' + sku_p + '&orden=' + orden + '&linea_producto=' + linea_producto,
+                type: 'post',
+                success: function(data) {
+                    //MOSTRANDO lOADING, LUEGO RESULTADO 
+                    $('.loader').fadeIn('slow', function() {
+                        $('.loader').css('display', 'flex');
+                    });
+
+                    setTimeout(function() {
+                        $('.loader').fadeOut('slow', function() {
+                            $('#contentComponentesItems').append(data);
+
+                            $('.contenedor_carrusel_items[data-order="' + orden_next + '"]').slick(getSettingsSlick());
+
+                            var position = $('.contentComponentCards[data-order="' + orden_next + '"]').offset().top;
+
+                            var last_order = $('.contentComponentCards:last').attr('data-order');
+                            console.log("ULTIMO COMPONENTE PINTADO: " + last_order);
+                            if (last_order > orden_next) {
+                                var diferencia_tmp = Number(last_order) - Number(orden_next);
+                                var diferencia_tmp_1 = Number(last_order) - 1;
+                                if (diferencia_tmp == 1) {
+                                    $('.contenedor_carrusel_items[data-order="' + last_order + '"]').slick(getSettingsSlick());
+                                    var position_last = $('.contentComponentCards[data-order="' + last_order + '"]').offset().top;
+                                } else {
+                                    for (var i = Number(orden_next) + 1; i <= Number(last_order); i++) {
+                                        console.log("PINTANDO COMPONENTES SIGUIENTES: " + i);
+                                        $('.contenedor_carrusel_items[data-order="' + i + '"]').slick(getSettingsSlick());
+                                    }
+
+                                    var position_last = $('.contentComponentCards[data-order="' + orden_next + '"]').offset().top;
+                                    //$('.contenedor_carrusel_items[data-order="' + last_order + '"]').slick(getSettingsSlick());
+                                    //$('.contenedor_carrusel_items[data-order="' + diferencia_tmp_1 + '"]').slick(getSettingsSlick());
+                                }
+
+
+
+                                console.log("POSICION A LA QUE SE DIRIGE: " + position_last);
+
+                                $("HTML, BODY").animate({
+                                    scrollTop: position_last
+                                }, 1000);
+                            } else {
+                                console.log("POSICION A LA QUE SE DIRIGE: " + position);
+                                $("HTML, BODY").animate({
+                                    scrollTop: position
+                                }, 1000);
+                            }
+                            $("[data-bs-toggle=popover]").popover({
+                                html: true
+                            });
+
+                            $('.fa-solid.fa-circle-exclamation.fa-lg').popover().click(function() {
+                                setTimeout(function() {
+                                    $('.fa-solid.fa-circle-exclamation.fa-lg').popover('hide');
+                                }, 5000);
+                            });
+
+                        });
+                    }, 3000);
+
+
+                }
+            });
+            event.preventDefault();
+        }
+
+        function getSettingsSlick() {
+            return {
+                dots: true,
+                infinite: false,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                nextArrow: '<a class="slick-next-arrow" href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>',
+                prevArrow: '<a class="slick-prev-arrow" href=""><i class="fa fa-arrow-left" aria-hidden="true"></i></a>',
+                variableWidth: false,
+                responsive: [{
+                        breakpoint: 1280,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 640,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 360,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: false
+                        }
+                    }
+                ]
+            }
+        }
+
+        function callResetAllComponents(obj_1, type) {
+
+            //PREGUNTAREMOS SI DESEA QUE SE PROCEDA A BORRAR TODO.
+            //
+            var ValuePrevio = $(obj_1).attr('data-previus');
+            var valueSelect = $(obj_1).val();
+            var price_p = $('option:selected', obj_1).attr('data-price');
+            var img_p = $('option:selected', obj_1).attr('data-img');
+            var name_p = $('option:selected', obj_1).attr('data-name');
+            var desc_p = $('option:selected', obj_1).attr('data-desc');
+            var num_max = $('option:selected', obj_1).attr('data-num-max');
+            var id_html = $('option:selected', obj_1).attr('data-id-html');
+
+            //alert('ValuePrevio: '+ValuePrevio);
+            $(obj_1).attr('data-flag', '0');
+
+            if (ValuePrevio != 0) {
+                //alert('SEGUNDA/TERCERA VEZ .....'); return;
+                $('#modalConfirm').modal('show');
+                //SI DAN CLICK EN EL BOTON ACEPTAR/CONFIRMAR
+                //confirmarCambioTrue
+                $(document).on("click", "#confirmarCambioTrue", function() {
+                    //si le doy click en confirmar
+                    //Borrar todo el sideBar
+                    var data_order = $(obj_1).attr('data-order');
+                    if (type == 'componentesStockReset') {
+                        //BORRAR TODOS LOS COMPONENTES DEBAJO / CARRUSELES y COMBOS BOXS
+                        data_order = 2;
+                    }
+                    //alert('data orden: '+data_order);
+                    console.log('MOSTRANDO EL ORDEN DEL COMPONENTE SELECCIONADO: ' + data_order);
+                    $('#contentSelectedAllItems .itemSideBarHtml').each(function(index, element) {
+                        var data_order_sidebar = $(element).attr('data-order');
+                        //console.log("Data Order SiderBar ALL: " + $(element).attr('data-order'));
+                        if (Number(data_order_sidebar) > Number(data_order)) {
+                            //elimino HTML
+                            $(element).html('');
+                            //console.log("Sidebar Borrado ORDER : " + data_order_sidebar);
+                        }
+                        //
+                    });
+
+                    //BORRAR TODOS LOS COMPONENTES DEBAJO / CARRUSELES y COMBOS BOXS
+                    if (type == 'componentes' || type == 'componentesStockReset') {
+                        callResetOnlyComponents(data_order);
+                    }
+                    //DEJANDO CONSTANCIA QUE SE DIO CLIK
+                    $(obj_1).attr('data-flag', '1');
+                    //CERRANDO MODAL
+                    $('#modalConfirm').modal('hide');
+                    //Call to Function
+                    callToSelectedSidebar(valueSelect, price_p, img_p, name_p, desc_p, type, id_html, num_max);
+                    if (type != 'componentes') {
+                        callToApi(type, valueSelect, name_p);
+                    }
+
+                    callCalculateSubTotal();
+
+                    return;
+                });
+
+                //VERIFICAR QUE CUANDO SE DE CLICKJ EN CERRAR
+                $('#modalConfirm').on('hidden.bs.modal', function(e) {
+                    var flagClick = $(obj_1).attr('data-flag');
+                    if (flagClick == '0') {
+                        $(obj_1).val(ValuePrevio);
+                        console.log('CAMBIANDO EL VALOR AL SELECT: ' + ValuePrevio);
+                        return;
+                    }
+                })
+
+            } else {
+                //alert('PRIMERA VEZ....'); return;
+                //Call to Function
+                callToSelectedSidebar(valueSelect, price_p, img_p, name_p, desc_p, type, id_html, num_max);
+                if (type != 'componentes') {
+                    callToApi(type, valueSelect, name_p);
+                }
+
+                callCalculateSubTotal();
+            }
+
+        }
+
+        function callResetOnlyComponents(data_order) {
+            validateStockSelects($("#flexSwitchCheckStockComponentes"));
+            $('#contentComponentesItems .contentComponentCards').each(function(index, element) {
+                var data_order_component = $(element).attr('data-order');
+
+                if (Number(data_order_component) > Number(data_order)) {
+
+                    console.log('========================== ' + $(element).attr('data-title') + ' ==========================');
+
+                    if (data_order_component >= 3 && data_order_component <= 6) {
+                        //UN COMBO BOX SE RESETEARA
+                        $(element).find('#selectComponentesItem').val(0);
+                    } else {
+                        //UN CARRUSEL SE RESETEARA --contenedor_carrusel_items selectedItemCard
+                        $(element).find('.contenedor_carrusel_items').slick('slickUnfilter');
+                        $(element).find('.selectedItemCard').removeClass('selectedItemCard');
+
+                        //PARA TARJETA DE VIDEO:
+                        switch (data_order_component) {
+                            case '7':
+                                executeTarjetaVsCase(10);
+                                executeTarjetaVsFuente(10);
+                                break;
+                            case '8':
+                                executeCaseVsCooler(100000, 100000);
+                                executeCaseVsFuente(100000, 'ATX', 'sin_fuente');
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                    }
+                }
+            });
+        }
+
+
+        function validateStockSelects(obj) {
+            if (obj.is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                obj.parent().parent().find('.form-select option').each(function(index, element) {
+                    var stockItem = $(element).attr('data-stock');
+                    if (Number(stockItem) == 0) {
+                        $(element).addClass('d-none');
+                        //console.log("Valor: "+$(element).value());
+                    }
+                });
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                obj.parent().parent().find('.form-select option').each(function(index, element) {
+                    var stockItem = $(element).attr('data-stock');
+                    if (Number(stockItem) == 0) {
+                        $(element).removeClass('d-none');
+                        //console.log("Valor: "+$(element).value());
+                    }
+                });
+            }
+        }
+
+        function executeCompatibilidadCase(objCase) {
+            var sku_case = objCase.parent().find('.skuItem').val();
+
+            var largo_fuente_c = objCase.parent().find('.largoFuentePower').val();
+            var largo_array = largo_fuente_c.split(' ');
+            var largo_array_limite_c = largo_array[0];
+
+            var alto_fan_cooler = objCase.parent().find('.altoFanCooler').val();
+            var alto_fan_cooler_array = alto_fan_cooler.split(' ');
+            var alto_fan_cooler_array_limite = alto_fan_cooler_array[0];
+
+            var formato_fuente = objCase.parent().find('.formatoFuente').val();
+
+            var potencia_fuente_poder = objCase.parent().find('.PotenciaFuentePoder').val();
+
+            var radiador_max = objCase.parent().find('.RadiadorMax').val();
+
+            //console.log('FUENTE DE PODER DEL CASE: '+potencia_fuente_poder);
+
+            executeCaseVsCooler(alto_fan_cooler_array_limite, radiador_max);
+            executeCaseVsFuente(largo_array_limite_c, formato_fuente, potencia_fuente_poder);
+
+            //executeCaseVsFuente2(alto_fan_cooler_array_limite);
+
+        }
+
+        function executeCompatibilidadTarjetaVideo(objTarjeta) {
+
+            var sku_tarjeta = objTarjeta.parent().find('.skuItem').val();
+
+            var fuente_recomendada = objTarjeta.parent().find('.FuenteRecomendada').val();
+            var fuente_array = fuente_recomendada.split(' ');
+            var fuente_array_limite = fuente_array[0];
+
+            var largo_video_card = objTarjeta.parent().find('.largoVideoCard').val();
+            var largo_array = largo_video_card.split(' ');
+            var largo_array_limite = largo_array[0];
+
+            executeTarjetaVsCase(largo_array_limite);
+            executeTarjetaVsFuente(fuente_array_limite);
+
+
+        }
+
+        function executeCaseVsCooler(alto_fan_cooler_array_limite, radiador_max) {
+
+            $('.contenedor_carrusel_items.class-fan-cooler-para-cpu').slick('slickUnfilter');
+            $('.contenedor_carrusel_items.class-fan-cooler-para-cpu').removeAttr('id');
+
+            //EVALUAR LOS COOLERS Y VER QUE SU ALTO SEAN CORRECTOS PARA EL CASE ESCOGIDO
+            const array_marcas = [];
+            var i = 0;
+            $('.class-fan-cooler-para-cpu .altoFanCoolerBlock').each(function(index, element) {
+                $(element).parent().removeClass('FiltroCompatibilidadCoolerAprobadoAlto');
+                var altoFanCoolerBlock = $(element).val();
+                var radiadorSize = $(element).parent().find('.RadiadorSize').val();
+                if (typeof altoFanCoolerBlock === 'undefined' || altoFanCoolerBlock === null) {
+                    console.log($(element).val() + 'The variable is undefined or null');
+                } else {
+                    if (altoFanCoolerBlock !== '') {
+                        var altoFanCoolerBlock_array = altoFanCoolerBlock.split(' ');
+
+                        if (Number(alto_fan_cooler_array_limite) >= Number(altoFanCoolerBlock_array[0]) && radiador_max >= radiadorSize) {
+                            i = i + 1;
+                            //console.log('Alto Fan Cooler Case <=> Alto Fan Cooler Cooler' + ' : ' + alto_fan_cooler_array_limite + ' <=> ' + altoFanCoolerBlock_array[0]);
+                            console.log('[CASE-VS-COOLER]: CASE SOPORTA HASTA: ' + alto_fan_cooler_array_limite + ' <=> ' + 'ALTO DEL COOLER: ' + altoFanCoolerBlock_array[0]);
+                            $(element).parent().addClass('FiltroCompatibilidadCoolerAprobadoAlto');
+                            //GUARDAR MARCAS DE LOS SKUS, PARA GENERAR NUEVO LISTADO DE FILTROS (MARCAS)
+                            array_marcas[i] = $(element).parent().find('.brandItem').val();
+                        }
+                    }
+
+                }
+            });
+
+            //Armando los nuevos filtros de marca
+            generateNewFiltroMarcas(array_marcas, '.contenedor_carrusel_items.class-fan-cooler-para-cpu');
+
+            $('.contenedor_carrusel_items.class-fan-cooler-para-cpu').slick('slickFilter', '.FiltroCompatibilidadCoolerAprobadoAlto');
+            $('.contenedor_carrusel_items.class-fan-cooler-para-cpu').attr('id', 'FiltroCompatibilidadCoolerAprobadoAlto');
+        }
+
+        function executeCaseVsFuente(largo_array_limite_c, formato_fuente, potencia_fuente_poder) {
+            //Agregar Mensaje de si es obligatorio o no escoger una fuente
+            if (potencia_fuente_poder == 'sin_fuente') {
+                $('.class-cases--fuente-para').parent().parent().removeClass('bg-secondary');
+                $('.class-cases--fuente-para').parent().parent().addClass('bg-danger');
+                $('.class-cases--fuente-para').parent().parent().find('.card-header').html('<img src="https://cdn-icons-png.flaticon.com/512/911/911514.png" alt="twbs" class="rounded-circle flex-shrink-0" width="32" height="32">FUENTE DE PODER  | Necesita seleccionar una fuente para su configuración');
+
+            } else {
+                $('.class-cases--fuente-para').parent().parent().removeClass('bg-danger');
+                $('.class-cases--fuente-para').parent().parent().addClass('bg-secondary');
+                $('.class-cases--fuente-para').parent().parent().find('.card-header').html('<img src="https://cdn-icons-png.flaticon.com/512/911/911514.png" alt="twbs" class="rounded-circle flex-shrink-0" width="32" height="32">FUENTE DE PODER  | Opcional');
+
+            }
+
+
+
+            $('.contenedor_carrusel_items.class-cases--fuente-para').slick('slickUnfilter');
+            $('.contenedor_carrusel_items.class-cases--fuente-para').removeAttr('id');
+            //AGREGANDO FCOMPATIBILIDAD ANTERIOR: FiltroCompatibilidadFuenteAprobadas
+            $('.contenedor_carrusel_items.class-cases--fuente-para').slick('slickFilter', '.FiltroCompatibilidadFuenteAprobadas');
+
+            //EVALUAR LAS FUENTES DE PODER Y VER CUALES CUMPLEN CON EL LARGO PERMITIDO POR EL CASE ESCOGIDO
+            const array_marcas = [];
+            var i = 0;
+            $('.class-cases--fuente-para .largoFuentePower').each(function(index, element) {
+                $(element).parent().removeClass('FiltroCompatibilidadFuenteAprobadasLargo');
+                var largoFuentePower = $(element).val();
+                var formatoFuentePower = $(element).next().val();
+                if (typeof largoFuentePower === 'undefined' || largoFuentePower === null) {
+                    console.log($(element).val() + 'The variable is undefined or null');
+                } else {
+                    if (largoFuentePower !== '') {
+                        var largoFuentePower_array = largoFuentePower.split(' ');
+                        if (Number(largo_array_limite_c) >= Number(largoFuentePower_array[0]) && formatoFuentePower == formato_fuente) {
+                            i = i + 1;
+                            //console.log('Largo Fuente Case <=> Largo Fuente' + ' : ' + largo_array_limite_c + ' <=> ' + largoFuentePower_array[0]);
+                            console.log('[CASE-VS-FUENTE]: CASE SOPORTA HASTA: ' + largo_array_limite_c + ' <=> ' + 'LARGO FUENTE: ' + largoFuentePower_array[0]);
+                            $(element).parent().addClass('FiltroCompatibilidadFuenteAprobadasLargo');
+                            //GUARDAR MARCAS DE LOS SKUS, PARA GENERAR NUEVO LISTADO DE FILTROS (MARCAS)
+                            array_marcas[i] = $(element).parent().find('.brandItem').val();
+                        }
+                    }
+
+                }
+            });
+
+            $('.contenedor_carrusel_items.class-cases--fuente-para').slick('slickFilter', '.FiltroCompatibilidadFuenteAprobadasLargo');
+            $('.contenedor_carrusel_items.class-cases--fuente-para').attr('id', 'FiltroCompatibilidadFuenteAprobadasLargo');
+
+            //Armando los nuevos filtros de marca
+            generateNewFiltroMarcas(array_marcas, '.contenedor_carrusel_items.class-cases--fuente-para');
+        }
+
+        function executeTarjetaVsCase(largo_array_limite) {
+            //alert('largo_array_limite: ' + largo_array_limite);
+            $('.contenedor_carrusel_items.class-cases--cajas--para-pc').slick('slickUnfilter');
+            $('.contenedor_carrusel_items.class-cases--cajas--para-pc').removeAttr('id');
+            //EVALUAR LAS FUENTES DE PODER Y VER CUALES CUMPLEN CON LA POTENCIA PARA ALIMENTAR A LA TARJETA DE VIDEO SELECCIONADA
+            const array_marcas = [];
+            var i = 0;
+            $('.class-cases--cajas--para-pc .largoVideoCard').each(function(index, element) {
+                $(element).parent().removeClass('FiltroCompatibilidadCaseAprobados');
+                var largoVideoCard = $(element).val();
+                if (typeof largoVideoCard === 'undefined' || largoVideoCard === null) {
+                    console.log($(element).val() + 'The variable is undefined or null');
+                } else {
+                    if (largoVideoCard !== '') {
+                        var largoVideoCard_array = largoVideoCard.split(' ');
+                        if (Number(largo_array_limite) < Number(largoVideoCard_array[0])) {
+                            i = i + 1;
+                            var sku_aprobado = $(element).parent().find('.skuItem').val();
+                            //console.log('[' + sku_aprobado + ']: Largo Tarjeta Video <=> Largo Soportado Case' + ' : ' + largo_array_limite + ' <=> ' + largoVideoCard_array[0]);
+                            console.log('[TARJETA-VS-CASE]: CASE SOPORTA HASTA: ' + largoVideoCard_array[0] + ' <=> ' + 'LARGO TARJETA: ' + largo_array_limite);
+                            $(element).parent().addClass('FiltroCompatibilidadCaseAprobados');
+                            //GUARDAR MARCAS DE LOS SKUS, PARA GENERAR NUEVO LISTADO DE FILTROS (MARCAS)
+                            array_marcas[i] = $(element).parent().find('.brandItem').val();
+                        }
+                    }
+
+                }
+            });
+            $('.contenedor_carrusel_items.class-cases--cajas--para-pc').slick('slickFilter', '.FiltroCompatibilidadCaseAprobados');
+            $('.contenedor_carrusel_items.class-cases--cajas--para-pc').attr('id', 'FiltroCompatibilidadCaseAprobados');
+
+
+            //Armando los nuevos filtros de marca
+            generateNewFiltroMarcas(array_marcas, '.contenedor_carrusel_items.class-cases--cajas--para-pc');
+
+            //console.log('NUEVOT TXT FILTRO;: '+ txt_filtro_new);
+
+        }
+
+        function executeTarjetaVsFuente(fuente_array_limite) {
+            //alert('fuente_array_limite: ' + fuente_array_limite);
+            $('.contenedor_carrusel_items.class-cases--fuente-para').slick('slickUnfilter');
+            $('.contenedor_carrusel_items.class-cases--fuente-para').removeAttr('id');
+
+            //EVALUAR LAS FUENTES DE PODER Y VER CUALES CUMPLEN CON LA POTENCIA PARA ALIMENTAR A LA TARJETA DE VIDEO SELECCIONADA
+            $('.class-cases--fuente-para .PotenciaFuente').each(function(index, element) {
+                $(element).parent().removeClass('FiltroCompatibilidadFuenteAprobadas');
+                var potencia = $(element).val();
+                if (typeof potencia === 'undefined' || potencia === null) {
+                    console.log($(element).val() + 'The variable is undefined or null');
+                } else {
+                    if (potencia !== '') {
+                        var potencia_array = potencia.split(' ');
+                        if (Number(fuente_array_limite) < Number(potencia_array[0])) {
+                            //console.log('Comparacion: Fuente R <=> Potencia F' + ' : ' + fuente_array_limite + ' <=> ' + potencia_array[0]);
+                            var sku_aprobado = $(element).parent().find('.skuItem').val();
+                            console.log('[TARJETA-VS-FUENTE]: FUENTE POTENCIA: ' + potencia_array[0] + ' <=> ' + 'POTENCIA SOLICITADA: ' + fuente_array_limite);
+                            $(element).parent().addClass('FiltroCompatibilidadFuenteAprobadas');
+                        }
+                    }
+
+                }
+            });
+
+            //Armando los nuevos filtros de marca
+            //generateNewFiltroMarcas(array_marcas, '.contenedor_carrusel_items.class-cases--fuente-para');
+
+            $('.contenedor_carrusel_items.class-cases--fuente-para').slick('slickFilter', '.FiltroCompatibilidadFuenteAprobadas');
+            $('.contenedor_carrusel_items.class-cases--fuente-para').attr('id', 'FiltroCompatibilidadFuenteAprobadas');
+        }
+
+        function generateNewFiltroMarcas(array_marcas, txt_class) {
+            //var txt_filtro_new = '<label>Marcas: </label><button type="button" class="btn btn-light btnFilterC" data-filter="brand-sin-filtros">Todos</button>';
+            var txt_filtro_new = '<label>Marcas: </label>';
+            //Array con valores unicos
+            let array_marcas_unique = array_marcas.filter((item, index) => {
+                return array_marcas.indexOf(item) === index;
+            })
+            //Recorriendo el array
+            array_marcas_unique.forEach(element => {
+                var element_txt = element.split('-');
+                txt_filtro_new = txt_filtro_new + '<button type="button" class="btn btn-light btnFilterC" data-filter="' + element + '">' + element_txt[1] + '</button>';
+            });
+            //Reemplazar por el nuevo filtro:
+            $(txt_class).parent().find('.content_filtros_carruseles').html(txt_filtro_new);
+        }
+
+        function executeSlick() {
+            //ya no se ocultaran.
+            /*$("#contentComponentesItems .contenedor_carrusel_items").on('init', function(event, slick) {
+
+                console.log("initialized Slick 2023");
+                //OCULTAR LOS COMPONENTES.
+                setTimeout(function() {
+                    $('.not_show').slideUp('slow', function() {
+                        console.log('OCULTANDO COMPONENTES.....');
+                    });
+                }, 4000);
+
+            });*/
+            //CARRUSEL PARA LOS ITEMS
+            $("#contentComponentesItems .contenedor_carrusel_items").slick({
+                dots: true,
+                infinite: false,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                nextArrow: '<a class="slick-next-arrow" href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>',
+                prevArrow: '<a class="slick-prev-arrow" href=""><i class="fa fa-arrow-left" aria-hidden="true"></i></a>',
+                variableWidth: false,
+                responsive: [{
+                        breakpoint: 1280,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 640,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: false
+                        }
+                    },
+                    {
+                        breakpoint: 360,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: false
+                        }
+                    }
+                ]
+            });
+
+            //changue qty
+            $(document).on("input", "#tentacles", function() {
+                //detectamos el valor de todos los qtys
+                                    var moneda_simbolo = '$ ';
+                                var sub_total = 0;
+                $('#contentSelectedAllItems .qtyItem').each(function(index, element) {
+                    /*
+                    var qtyItem = $(element).val();
+                    let value_price = parseFloat($(element).parent().parent().find('.price_item_selected').attr('data_price_i').replace(/,/g, ''));
+                    let value_price_1 = parseFloat(qtyItem*value_price);
+                    //console.log();
+                    console.log("Cantidades: " + qtyItem + " | Precio item: " + value_price_1);
+                    sub_total = Number(sub_total) + Number(value_price_1);
+                    sub_total_end = Number(sub_total);
+                    $('#sub_total_all').text(moneda_simbolo + sub_total.toFixed(2));
+                    $('#sub_total_all_end').text(moneda_simbolo + sub_total_end.toFixed(2));
+                    */
+
+                    callCalculateSubTotal();
+                });
+            });
+        }
+
+        function callCalculateSubTotal() {
+            console.log("LLAMANDO A callCalculateSubTotal");
+                            var moneda_simbolo = '$ ';
+                        //BUSCAREMOS TODOS LOS PRECIOS SELECCIONADOS EN EL SIDEBAR
+            var sub_total = 0;
+            $('.price_item_selected').each(function(index, element) {
+                //var value_price = $(element).attr('data_price_i');
+                var qtyItem = $(element).parent().find(".qtyItem").val();
+                let value_price = parseFloat($(element).attr('data_price_i').replace(/,/g, ''));
+                let value_price_1 = parseFloat(qtyItem * value_price);
+                //console.log("Precio item: "+  value_price);
+                sub_total = Number(sub_total) + Number(value_price_1);
+                sub_total_end = Number(sub_total);
+                $('#sub_total_all').text(moneda_simbolo + sub_total.toFixed(2));
+                $('#sub_total_all_end').text(moneda_simbolo + sub_total_end.toFixed(2));
+
+            });
+            //CAMBIAR TEXTO SUBTOTAL Y TOTAL INC IGV
+                            var igv_value = Number(sub_total_end) * 0.18;
+                var total_all_value = Number(sub_total_end) * 1.18;
+                $('#sub_total_all').parent().removeClass("d-none");
+                $('#igv_end').parent().removeClass("d-none");
+                $('#igv_end').text(moneda_simbolo + igv_value.toFixed(2));
+                $('#sub_total_all_end').text(moneda_simbolo + total_all_value.toFixed(2));
+
+
+                //SI EL RESULTADO ES 0.00 CAMBIARLO AL TXT MESSSAGE 
+                if ($('#sub_total_all').text() == '$ 0.00') {
+                    $('#sub_total_all').text("Consultar");
+                }
+                if ($('#igv_end').text() == '$ 0.00') {
+                    $('#igv_end').text("Consultar");
+                }
+                if ($('#sub_total_all_end').text() == '$ 0.00') {
+                    $('#sub_total_all_end').text("Consultar");
+                }
+                    }
+
+        function callToSelectedSidebar(valueSelect, price_p, img_p, name_p, desc_p, type, id_html, num_max) {
+            console.log('LLAMANDO AL callToSelectedSidebar CON EL SKU: ' + valueSelect);
+                            var moneda_simbolo = '$ ';
+                        console.log('LLAMANDO AL callToSelectedSidebar y la moneda es: ' + moneda_simbolo);
+
+            var html_start = '<span class="list-group-item list-group-item-action" aria-current="true"><div class="d-flex w-100 justify-content-between">';
+            var html_img = '<img data-tittle="' + name_p + '" data-src="' + img_p + '" class="clickModal" id="imageProduct" data-sku="' + valueSelect + '" src="' + img_p + '" width="80"/><i class="fa-solid fa-circle-plus"></i>';
+            var html_name = '<h5 data-tittle="' + name_p + '" data-src="' + img_p + '" data-sku="' + valueSelect + '" class="clickModalTemp" class="mb-1" style="color:#0c63e4;cursor:pointer;"><a target="_blank" href="/modulos/productos/items/postsql.php?item_number=' + valueSelect + '">' + name_p + '</a></h5>';
+
+            var html_price = '';
+            if (price_p == '0.00') {
+                html_price = '<small data_price_i="0.00" class="price_item_selected" style="width: 115px;font-weight:bold;">Precio: Consultar</small>';
+            } else {
+                html_price = '<small data_price_i="' + price_p + '" class="price_item_selected" style="width: 115px;font-weight:bold;">' + moneda_simbolo + ' ' + price_p + '</small>';
+            }
+            var html_und = '<small><input class="qtyItem" value="1" style="width: 40px;" type="number" id="tentacles" name="tentacles" min="1" max="' + num_max + '"></small>';
+            var html_end = '</div><p class="mb-1">' + desc_p + '</p><p>SKU: <b class="skuSelected">' + valueSelect + '</b></p></span>';
+
+            var html_final = html_start + html_img + html_name + html_price + html_und + html_end;
+
+            switch (type) {
+                case 'cpu':
+                    $('#contenCpuSelected').html(html_final);
+                    break;
+                case 'mdb':
+                    $('#MotherBoardSelected').html(html_final);
+                    break;
+                case 'componentes':
+                    var id_html_c = '#' + id_html;
+                    $(id_html_c).html(html_final);
+
+                    break;
+            }
+
+            //
+            //EVALUAR SI AL SELECCIONAR UN VIDEO, HAY ALGUN CASE EN EL SIDERBAR(SI HAY UN CASE EN EL SIDEBAR, BORRARLO)
+            if (id_html == 'tarjetas-de-video---dispositivos-de-video') {
+                var case_html_eval = $('#cases--cajas--para-pc').html();
+                if (case_html_eval) {
+                    $('#cases--cajas--para-pc').html('');
+                }
+            }
+        }
+
+        function saveItemSelectedSesion() {
+            //RECORRER TODO EL SIDEBAR
+            const array_skus = [];
+            var i = 0;
+            $('#contentSelectedAllItems .skuSelected').each(function(index, element) {
+                var sku = $(element).text();
+                var name_producto = $(element).parent().parent().find("h5.clickModalTemp").text();
+                var qty_producto = $(element).parent().parent().find("#tentacles").val();
+
+                let producto = {
+                    'SKU': sku,
+                    'NAME': name_producto,
+                    'QTY': qty_producto
+                };
+                array_skus.push(producto);
+                i++;
+            });
+            console.log(array_skus);
+
+            //CALL TO AJAX SAVE ITEMS SELECTED
+            $.ajax({
+                url: '',
+                data: 'saveItemSelected=go&arrays_sku=' + JSON.stringify(array_skus, null, 2),
+                type: 'POST',
+                success: function(data) {
+                    //console.log("Grabando en sesion: " + txt_sku + ' - ' + txt_name + ' - ' + txt_qty);
+                }
+            });
+
+        }
+
+        function callToApi(cmpo, dato, name_p) {
+            //LLAMANDO POR AJAX Y PHP AL API
+            //
+            console.log('LLAMANDO AL callToApi CON EL SKU: ' + dato);
+            //LAMANDO AL POPOVER
+
+            $.ajax({
+                url: '',
+                data: 'apiGoCall=go&cmpo=' + cmpo + '&dato=' + dato + '&name=' + name_p,
+                type: 'post',
+                success: function(data) {
+                    switch (cmpo) {
+                        case 'marca':
+                            $('#contentCpuItems').html(data);
+                            $("#collapseTwo").collapse('show');
+                            break;
+                        case 'cpu':
+                            $('#contentMotherBoardsItems').html(data);
+                            $("#collapseThree").collapse('show');
+                            break;
+                        case 'mdb':
+                            $('#contentComponentesItems').html(data);
+                            $("#collapseFour").collapse('show');
+                            executeSlick();
+                            //Luego de ejecutar el Slick, ocultar todos los paneles con: d-none
+                            //$('.d-none').fadeOut();
+                            break;
+                    }
+                    $("[data-bs-toggle=popover]").popover({
+                        html: true
+                    });
+                    $('.fa-solid.fa-circle-exclamation.fa-lg').popover().click(function() {
+                        setTimeout(function() {
+                            $('.fa-solid.fa-circle-exclamation.fa-lg').popover('hide');
+                        }, 5000);
+                    });
+
+                }
+            });
+
+            event.preventDefault();
+        }
+
+        function setHeader(xhr) {
+
+            xhr.setRequestHeader('Authorization', "Bearer fda725dea598902439c6c1115865ce1b");
+        }
+    </script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics 4 header_ga4.inc -->
+    
+     <script>
+     if (window.gtag)
+         console.log('declarado');
+     else
+         console.log('no declarado');
+     </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRF04X8D8W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+       // if (dataLayer[0] !== undefined) {
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-WRF04X8D8W', {'user_id': 'gd_nologin'});
+            gtag('set', 'user_properties', {'gd_crm_id' : 'gd_nologin'});
+            gtag('event', 'page_header_ga4', { 'send_to': 'G-WRF04X8D8W' });
+       // }
+
+    </script>
+    <!-- End Google Analytics -->
+
+</body>
+
+</html>
